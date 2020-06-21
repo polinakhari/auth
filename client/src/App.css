@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #ffffff;
 }
 header {
@@ -48,7 +48,7 @@ input {
   position: relative;
   z-index: 1;
   border-bottom: 1px solid #dedede;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: lighter;
   padding-bottom: 9px;
   font-size: 15px;
@@ -108,8 +108,8 @@ input:-webkit-autofill:focus input:-webkit-autofill {
   z-index: 1;
 }
 .pass-eye:before {
-  content: "";
-  background-image: url("img/group.svg");
+  content: '';
+  background-image: url('img/group.svg');
   position: absolute;
   top: -21px;
   right: 0;
@@ -133,7 +133,7 @@ input:focus:invalid {
   color: #000;
 }
 .rules ~ label::before {
-  content: "";
+  content: '';
   position: relative;
   top: 16px;
   left: -30px;
@@ -148,7 +148,7 @@ input:focus:invalid {
   margin-bottom: 36px;
 }
 .form-group--check input:checked ~ label::after {
-  content: "";
+  content: '';
   position: relative;
   top: -15px;
   left: -26px;

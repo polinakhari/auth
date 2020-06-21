@@ -1,27 +1,27 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { IMaskInput } from "react-imask";
-import axios from "axios";
-import Header from "./Header";
-import Succsess from "./Succsess";
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { IMaskInput } from 'react-imask';
+import axios from 'axios';
+import Header from './Header';
+import Succsess from './Succsess';
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
   const [isChecked, setisChecked] = useState(false);
   const [mask, setMask] = useState(true);
 
   const history = useHistory();
 
   const onShow = () => {
-    const pwd = document.querySelector(".password");
-    if (pwd.type === "password") {
-      pwd.type = "text";
+    const pwd = document.querySelector('.password');
+    if (pwd.type === 'password') {
+      pwd.type = 'text';
     } else {
-      pwd.type = "password";
+      pwd.type = 'password';
     }
   };
 
@@ -29,24 +29,24 @@ const Register = () => {
     const { name, value, checked } = e.target;
 
     switch (name) {
-      case "name":
+      case 'name':
         setName(value);
         break;
-      case "login":
+      case 'login':
         setLogin(value);
         break;
-      case "email":
+      case 'email':
         setEmail(value);
         break;
-      case "phone":
+      case 'phone':
         console.log(value.split(' ').join(''))
         const newPhone = value.split(' ').join('')
         setPhone(newPhone);
         break;
-      case "password":
+      case 'password':
         setPassword(value);
         break;
-      case "rules":
+      case 'rules':
         setisChecked(checked);
         break;
       default:
@@ -65,21 +65,21 @@ const Register = () => {
     try {
       const config = {
         headers: {
-          "Content-Type": "Application/json",
+          'Content-Type': 'Application/json',
         },
       };
       const body = JSON.stringify(newUser);
-      const res = await axios.post("/api/users", body, config);
+      const res = await axios.post('/api/users', body, config);
       console.log(res.data)
-      let succsess = document.querySelector(".succsess");
-      succsess.classList.add("succsess-transition");
-      setTimeout(() => history.push("/login"), 3000);
+      let succsess = document.querySelector('.succsess');
+      succsess.classList.add('succsess-transition');
+      setTimeout(() => history.push('/login'), 3000);
     } catch (error) {
       console.error(error.response.data);
     }
   };
   useEffect(() => {
-    document.querySelector(".phone").addEventListener("change", (event) => {
+    document.querySelector('.phone').addEventListener('change', (event) => {
       console.log(event);
       handleChange(event);
     });
@@ -87,109 +87,109 @@ const Register = () => {
 
   return (
     <Fragment>
-      <div className="wrapper">
-        <Header title={"Регистрация"} />
-        <div className="container">
+      <div className='wrapper'>
+        <Header title={'Регистрация'} />
+        <div className='container'>
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="form-group">
+            <div className='form-group'>
               <input
-                type="text"
-                name="name"
-                id="name"
+                type='text'
+                name='name'
+                id='name'
                 value={name}
-                className="name"
+                className='name'
                 onChange={(event) => handleChange(event)}
-                placeholder=" "
-                minLength="3"
+                placeholder=' '
+                minLength='3'
                 required
               />
-              <label htmlFor="name">Имя</label>
+              <label htmlFor='name'>Имя</label>
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <input
-                type="text"
-                name="login"
-                id="login"
+                type='text'
+                name='login'
+                id='login'
                 value={login}
-                className="login"
+                className='login'
                 onChange={(event) => handleChange(event)}
-                minLength="3"
-                placeholder=" "
+                minLength='3'
+                placeholder=' '
                 required
               />
-              <label htmlFor="login">Никнейм</label>
+              <label htmlFor='login'>Никнейм</label>
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <input                
-                name="email"
-                id="email"
+                name='email'
+                id='email'
                 value={email}
-                className="email"
+                className='email'
                 onChange={(event) => handleChange(event)}
-                type="email"
-                placeholder=" "
+                type='email'
+                placeholder=' '
                 required
               />
-              <label htmlFor="email">Email</label>
+              <label htmlFor='email'>Email</label>
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <IMaskInput
-                mask="+{7} 000 000 00 00"
+                mask='+{7} 000 000 00 00'
                 lazy={mask}
-                type="tel"
-                id="phone"
-                placeholderChar="_"
-                placeholder=" "
+                type='tel'
+                id='phone'
+                placeholderChar='_'
+                placeholder=' '
                 value={phone}
-                name="phone"
-                className="phone"
-                pattern="[789][0-9]{9}"
+                name='phone'
+                className='phone'
+                pattern='[789][0-9]{9}'
                 required
                 onFocus={() => setMask(false)}
                 onBlur={() => setMask(true)}
               />
-              <label htmlFor="phone">Телефон</label>
+              <label htmlFor='phone'>Телефон</label>
             </div>
-            <div className="form-group">
+            <div className='form-group'>
               <input
-                name="password"
-                id="password"
+                name='password'
+                id='password'
                 value={password}
-                className="password"
+                className='password'
                 onChange={(event) => handleChange(event)}
-                type="password"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                placeholder=" "
+                type='password'
+                pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                placeholder=' '
                 required
               />
-              <label htmlFor="password">Пароль</label>
-              <p className="pass-eye" onClick={onShow}></p>
+              <label htmlFor='password'>Пароль</label>
+              <p className='pass-eye' onClick={onShow}></p>
             </div>
-            <div className="form-group form-group--check">
+            <div className='form-group form-group--check'>
               <input
-                type="checkbox"
-                name="rules"
+                type='checkbox'
+                name='rules'
                 checked={isChecked}
-                id="rules"
-                className="rules"
+                id='rules'
+                className='rules'
                 onChange={(event) => handleChange(event)}
                 required
               />
-              <label htmlFor="rules">
+              <label htmlFor='rules'>
                 Я даю свое согласие на обработку персональных данных
               </label>
             </div>
-            <button type="submit" className="btn" disabled={!isChecked}>
+            <button type='submit' className='btn' disabled={!isChecked}>
               Зарегистрироваться
             </button>
           </form>
-          <div className="tologin">
+          <div className='tologin'>
             <p>Есть аккаунт?</p>
-            <Link to="/login">Войти</Link>
+            <Link to='/login'>Войти</Link>
           </div>
         </div>
       </div>
-      <Succsess text={"Вы зарегистрированы"} />
+      <Succsess text={'Вы зарегистрированы'} />
       <Fragment />
     </Fragment>
   );
