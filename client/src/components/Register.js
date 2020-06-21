@@ -39,8 +39,9 @@ const Register = () => {
         setEmail(value);
         break;
       case "phone":
-        console.log(value);
-        setPhone(value.slice(2));
+        console.log(value.split(' ').join(''))
+        const newPhone = value.split(' ').join('')
+        setPhone(newPhone);
         break;
       case "password":
         setPassword(value);
@@ -69,6 +70,7 @@ const Register = () => {
       };
       const body = JSON.stringify(newUser);
       const res = await axios.post("/api/users", body, config);
+      console.log(res.data)
       let succsess = document.querySelector(".succsess");
       succsess.classList.add("succsess-transition");
       setTimeout(() => history.push("/login"), 3000);
@@ -118,8 +120,7 @@ const Register = () => {
               <label htmlFor="login">Никнейм</label>
             </div>
             <div className="form-group">
-              <input
-                type="text"
+              <input                
                 name="email"
                 id="email"
                 value={email}

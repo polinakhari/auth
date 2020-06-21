@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Register from "./components/Register";

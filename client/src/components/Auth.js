@@ -5,10 +5,9 @@ import Succsess from "./Succsess";
 import { Link } from "react-router-dom";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
-  const [isChecked, setisChecked] = useState(true);
+  
 
   const onShow = () => {
     const pwd = document.querySelector(".password");
@@ -20,7 +19,7 @@ const Auth = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value } = e.target;
 
     switch (name) {
       case "email":
@@ -47,6 +46,7 @@ const Auth = () => {
       };
       const body = JSON.stringify(User);
       const res = await axios.post("/api/auth", body, config);
+      console.log(res.data)
       let succsess = document.querySelector(".succsess");
       succsess.classList.add("succsess-transition");
     } catch (error) {
@@ -75,8 +75,7 @@ const Auth = () => {
               <label htmlFor="email">Email или номер телефона</label>
             </div>
             <div className="form-group">
-              <input
-                type="text"
+              <input                
                 name="password"
                 value={password}
                 className="password"
@@ -90,7 +89,7 @@ const Auth = () => {
               <p className="pass-eye" onClick={onShow}></p>
             </div>
             <p className="error error-hide">Данные введены неверно</p>
-            <button type="submit" className="btn" disabled={!isChecked}>
+            <button type="submit" className="btn">
               Войти
             </button>
           </form>
