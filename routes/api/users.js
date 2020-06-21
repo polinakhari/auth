@@ -14,7 +14,7 @@ router.post(
     check("name", "Name is required").not().isEmpty(),
     check("login", "login is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
-    check("phone", "Please include a valid phone number").isMobilePhone(),
+    check("phone", "Please include a valid phone number").isMobilePhone,
     check(
       "password",
       "Please enter a password with 6 or more characters"

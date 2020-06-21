@@ -40,7 +40,7 @@ const Register = () => {
         break;
       case "phone":
         console.log(value);
-        setPhone(value);
+        setPhone(value.slice(2));
         break;
       case "password":
         setPassword(value);
