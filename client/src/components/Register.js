@@ -79,10 +79,13 @@ const Register = () => {
     }
   };
   useEffect(() => {
-    document.querySelector('.phone').addEventListener('change', (event) => {
+    const phoneinput = document.querySelector('.phone')
+    phoneinput.addEventListener('change', (event) => {
       console.log(event);
       handleChange(event);
     });
+    phoneinput.pattern = '+7[789][0-9]{9}'
+    
   });
 
   return (
@@ -142,8 +145,7 @@ const Register = () => {
                 placeholder=' '
                 value={phone}
                 name='phone'
-                className='phone'
-                pattern='[789][0-9]{9}'
+                className='phone'                
                 required
                 onFocus={() => setMask(false)}
                 onBlur={() => setMask(true)}
