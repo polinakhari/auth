@@ -229,6 +229,7 @@ input:focus:invalid {
   font-size: 40px;
   line-height: 47px;
   margin-top: 123px;
+  text-align: center;
 }
 .error {
   text-align: right;
