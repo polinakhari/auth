@@ -84,7 +84,7 @@ const Register = () => {
       console.log(event);
       handleChange(event);
     });
-    phoneinput.pattern = '/^\+7[789][0-9]{9}$/'
+    phoneinput.pattern = '\+7[0-9]{10}'
     
   });
 
